@@ -1,4 +1,6 @@
- import {BrowserRouter as Router ,Switch,Route}  from 'react-router-dom'
+ import { useEffect, useState } from 'react';
+import {BrowserRouter as Router ,Switch,Route}  from 'react-router-dom'
+import {CartContext } from './CartContext';
 import Navigation from './components/Navigation';
 import Products from './components/Products';
 import Cart from './pages/Cart';
@@ -8,10 +10,25 @@ import Home from './pages/Home';
 import SingleProduct from './pages/SingleProduct';
  
 
+
 function App() {
+
+const [cart ,setCart] =useState({})
+
+useEffect(()=>{
+   const cart= window.localStorage.getItem('cart');
+
+
+
+
+},[])
+
+
   return (
      <>
      <Router>
+       {/* <CartContext.Provider value={{name:'ffkfgfkg'}}> */}
+
        <Navigation />
         <Switch>
             <Route exact path='/' component={Home} />  
@@ -21,6 +38,8 @@ function App() {
             <Route exact path='/cart' component={Cart} />  
          
         </Switch>
+
+       {/* </CartContext.Provider> */}
      </Router>
      </>
   );

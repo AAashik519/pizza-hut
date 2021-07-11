@@ -2,8 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Product = (props) => {
+    const {product} = props
     const {image ,name ,price,size,_id} = props.product
     
+    const addToCart=(event,product)=>{
+        event.preventDefault()
+        console.log(event ,product) ;
+    }
+
     return (
         <Link to = {`/products/${_id}`}>
 
@@ -15,7 +21,7 @@ const Product = (props) => {
         </div>
         <div className='flex justify-between items-center mt-4'>
             <span>$ {price}</span>
-            <button className="bg-yellow-500 py-1 px-3 rounded-full font-bold">Add</button>
+            <button className="bg-yellow-500 py-1 px-3 rounded-full font-bold" onClick= { (e) =>{addToCart(e,product)}} >Add</button>
         </div>
     </div>
         </Link>

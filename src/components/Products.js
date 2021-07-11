@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import Product from './Product'
+import { CartContext } from '../CartContext'
 
 const Products = () => {
    const[products ,setProducts] = useState([])
