@@ -17,17 +17,22 @@ const [cart ,setCart] =useState({})
 
 useEffect(()=>{
    const cart= window.localStorage.getItem('cart');
+  setCart(JSON.parse(cart))
+ 
 
 
+},[]) 
 
 
-},[])
+useEffect(()=>{
+  window.localStorage.setItem('cart' ,JSON.stringify(cart));
+},[cart]) 
 
 
   return (
      <>
      <Router>
-       {/* <CartContext.Provider value={{name:'ffkfgfkg'}}> */}
+       <CartContext.Provider value={{ cart ,setCart }}>
 
        <Navigation />
         <Switch>
@@ -39,7 +44,7 @@ useEffect(()=>{
          
         </Switch>
 
-       {/* </CartContext.Provider> */}
+       </CartContext.Provider>
      </Router>
      </>
   );
